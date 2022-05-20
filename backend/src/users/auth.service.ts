@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Body, Injectable } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
 import { CreateUserDto } from './dtos/create-user.dto';
 import * as argon2 from 'argon2';
+import { SignInUserDto } from './dtos/signin-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -15,5 +16,28 @@ export class AuthService {
         password: hashedPassword,
       },
     });
+  }
+
+  async signIn(@Body() data: SignInUserDto) {
+    const existingUser = await this.prisma.user.findUnique({
+      where: {
+        username: data.username,
+      },
+    });
+
+    if (!existingUser) {
+      throw new BadRequestException('Invalid Credentials');
+    }
+
+    const isValidPassword = await argon2.verify(
+      existingUser.password,
+      data.password,
+    );
+
+    if (!isValidPassword) {
+      throw new BadRequestException('Invalid Credentials');
+    }
+
+    return existingUser;
   }
 }
