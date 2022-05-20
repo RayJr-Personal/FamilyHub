@@ -17,4 +17,12 @@ model User {
   email     String? @unique
   username  String  @unique
   password  String
+  Family    Family? @relation(fields: [familyId], references: [id])
+  familyId  String? @db.ObjectId
+}
+
+model Family {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  members User[]
 }
