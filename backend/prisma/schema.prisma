@@ -11,18 +11,20 @@ datasource db {
 }
 
 model User {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
-  firstName String
-  lastName  String
-  email     String? @unique
-  username  String  @unique
-  password  String
-  Family    Family? @relation(fields: [familyId], references: [id])
-  familyId  String? @db.ObjectId
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  firstName     String
+  lastName      String
+  email         String? @unique
+  username      String  @unique
+  password      String
+  isFamilyAdmin Boolean @default(false)
+  Family        Family? @relation(fields: [familyId], references: [id])
+  familyId      String? @db.ObjectId
 }
 
 model Family {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  name    String
-  members User[]
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  members     User[]
 }
