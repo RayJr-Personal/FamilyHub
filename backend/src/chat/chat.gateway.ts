@@ -32,7 +32,7 @@ export class ChatGateway
     this.server.emit('msgToClient', payload);
   }
 
-  afterInit(_server: Server) {
+  afterInit() {
     this.logger.log('Init');
   }
 
@@ -40,7 +40,7 @@ export class ChatGateway
     this.logger.log(`Client disconnected: ${client.id}`);
   }
 
-  async handleConnection(client: Socket, ...args: any[]) {
+  async handleConnection(client: Socket) {
     const messages = await this.chatService.getMessagesForRoom(
       client.request.headers.chatRoomId as string,
     );
