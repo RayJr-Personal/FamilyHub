@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'nestjs-prisma';
+import { ChatService } from 'src/chat/chat.service';
 import { UsersService } from 'src/users/users.service';
 import { CreateFamilyDto } from './dtos/create-family.dto';
 
@@ -8,18 +9,24 @@ export class FamiliesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly usersService: UsersService,
+    private readonly chatService: ChatService,
   ) {}
 
-  async createFamily(createFamilyDto: CreateFamilyDto) {
+  async createFamily(createFamilyDto: CreateFamilyDto, userId: string) {
     const family = await this.prisma.family.create({
       data: {
         ...createFamilyDto,
-        members: { connect: [{ id: createFamilyDto.userId }] },
+        members: { connect: [{ id: userId }] },
       },
     });
 
     if (family) {
-      await this.usersService.makeUserFamilyAdmin(createFamilyDto.userId);
+      await this.usersService.makeUserFamilyAdmin(userId);
+      await this.chatService.createChatroom({
+        name: `${family.name} chatroom`,
+        familyId: family.id,
+        userId: userId,
+      });
     }
 
     return family;

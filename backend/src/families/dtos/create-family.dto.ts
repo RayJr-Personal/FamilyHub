@@ -9,8 +9,6 @@ export class CreateFamilyDto {
   description?: string;
 
   @IsString()
+  @IsOptional()
   image?: string;
-
-  @IsString()
-  userId?: string;
 }
