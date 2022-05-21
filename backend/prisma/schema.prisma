@@ -11,20 +11,40 @@ datasource db {
 }
 
 model User {
-  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
   firstName     String
   lastName      String
-  email         String? @unique
-  username      String  @unique
+  email         String?       @unique
+  username      String        @unique
   password      String
-  isFamilyAdmin Boolean @default(false)
-  Family        Family? @relation(fields: [familyId], references: [id])
-  familyId      String? @db.ObjectId
+  isFamilyAdmin Boolean       @default(false)
+  Family        Family?       @relation(fields: [familyId], references: [id])
+  familyId      String?       @db.ObjectId
+  ChatRoom      Chatroom?     @relation(fields: [chatRoomId], references: [id])
+  chatRoomId    String?       @db.ObjectId
+  ChatMessage   ChatMessage[]
 }
 
 model Family {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
+  name        String  @unique
   description String?
   members     User[]
+}
+
+model Chatroom {
+  id       String        @id @default(auto()) @map("_id") @db.ObjectId
+  name     String?
+  members  User[]
+  messages ChatMessage[]
+  familyId String?       @db.ObjectId
+}
+
+model ChatMessage {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  message    String
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.ObjectId
+  chatroom   Chatroom @relation(fields: [chatroomId], references: [id])
+  chatroomId String   @db.ObjectId
 }

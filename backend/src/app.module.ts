@@ -6,6 +6,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { FamiliesModule } from './families/families.module';
+import { ChatModule } from './chat/chat.module';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const cookieSession = require('cookie-session');
 
@@ -23,6 +25,7 @@ const cookieSession = require('cookie-session');
     }),
     UsersModule,
     FamiliesModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [
