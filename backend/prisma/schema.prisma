@@ -30,6 +30,7 @@ model Family {
   name        String  @unique
   description String?
   members     User[]
+  Todo        Todo[]
 }
 
 model Chatroom {
@@ -47,4 +48,13 @@ model ChatMessage {
   userId     String   @db.ObjectId
   chatroom   Chatroom @relation(fields: [chatroomId], references: [id])
   chatroomId String   @db.ObjectId
+}
+
+model Todo {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  text      String
+  duedate   DateTime
+  completed Boolean
+  familyId  String? @db.ObjectId
+  family    Family? @relation(fields: [familyId], references: [id])
 }
