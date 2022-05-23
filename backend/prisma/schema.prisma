@@ -51,10 +51,10 @@ model ChatMessage {
 }
 
 model Todo {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   text      String
   duedate   DateTime
   completed Boolean
-  familyId  String? @db.ObjectId
-  family    Family? @relation(fields: [familyId], references: [id])
+  familyId  String?  @db.ObjectId
+  family    Family?  @relation(fields: [familyId], references: [id])
 }
