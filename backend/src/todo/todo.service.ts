@@ -6,17 +6,17 @@ import { CreateTodoDto } from './dtos/create-todo.dto';
 export class TodoService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async createTodo(data: CreateTodoDto, familyId: string) {
-
-
+  async createTodo(data: CreateTodoDto) {
     return this.prismaService.todo.create({
       data: {
-        text: data.text,
-        duedate: data.duedate,
         familyId: data.familyId,
+        text: data.text,
+        completed: data.completed,
+        duedate: data.duedate,
       },
     });
   }
+
 
   async getTodoForFamily(familyId: string) {
     return this.prismaService.todo.findMany({

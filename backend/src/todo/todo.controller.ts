@@ -22,7 +22,7 @@ export class TodoController {
     @CurrentFamily() familyId: string,
   ) {
     console.log('user', user);
-    return this.todoService.createTodo(createTodoDto, familyId);
+    return this.todoService.createTodo(createTodoDto);
   }
 
 }

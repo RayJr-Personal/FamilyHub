@@ -1,13 +1,14 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class CreateTodoDto {
   @IsString()
   text: string;
-
-  @IsString()
   duedate: string;
-
-  @IsString()
   familyId: string;
+  assignedUser: string;
 
+  @IsBoolean()
+  completed: boolean;
+  
+  userId: any;
 }

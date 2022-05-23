@@ -23,6 +23,7 @@ model User {
   ChatRoom      Chatroom?     @relation(fields: [chatRoomId], references: [id])
   chatRoomId    String?       @db.ObjectId
   ChatMessage   ChatMessage[]
+  Todo          Todo[]
 }
 
 model Family {
@@ -55,6 +56,8 @@ model Todo {
   text      String
   duedate   DateTime
   completed Boolean
-  familyId  String?  @db.ObjectId
-  family    Family?  @relation(fields: [familyId], references: [id])
+  assignedUser User   @relation(fields: [userId], references: [id])
+  userId     String   @db.ObjectId
+  familyId  String  @db.ObjectId
+  family    Family  @relation(fields: [familyId], references: [id])
 }
