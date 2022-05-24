@@ -7,6 +7,5 @@ export class TodoDto {
   familyId: string;
   assignedUser: string;
   completed: boolean;
-  userId: any;
 
 }
