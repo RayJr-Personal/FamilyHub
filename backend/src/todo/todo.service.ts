@@ -76,7 +76,7 @@ export class TodoService {
         id: todoId,
       },
       data: {
-        assignedUser: userId,
+        assignedUser: user,
       },
     });
 

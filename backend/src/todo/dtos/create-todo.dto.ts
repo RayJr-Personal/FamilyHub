@@ -4,14 +4,13 @@ export class CreateTodoDto {
   @IsString()
   text: string;
   familyId: string;
-  assignedUser: string;
 
   @IsString()
   @IsOptional()
   duedate: string;
+  assignedUser: string;
 
   @IsBoolean()
   completed: boolean;
   
-  userId: any;
 }
