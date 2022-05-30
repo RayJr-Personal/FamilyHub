@@ -12,6 +12,7 @@ export class FamiliesService {
     private readonly chatService: ChatService,
   ) {}
 
+  
   async createFamily(createFamilyDto: CreateFamilyDto, userId: string) {
     const family = await this.prisma.family.create({
       data: {
@@ -31,6 +32,7 @@ export class FamiliesService {
 
     return family;
   }
+
 
   async addUserToFamily(userId: string, familyId: string) {
     const family = await this.prisma.family.findUnique({
@@ -68,4 +70,60 @@ export class FamiliesService {
 
     return updatedFamily;
   }
+
+
+
+  async updateFamily(familyId: string, updateFamilyDto: CreateFamilyDto) {
+    const family = await this.prisma.family.findUnique({
+      where: {
+        id: familyId,
+      },
+    });
+
+    if (!family) {
+      throw new Error(`No family found with ID ${familyId}`);
+    }
+
+    const updatedFamily = await this.prisma.family.update({
+      where: {
+        id: familyId,
+      },
+      data: {
+        ...updateFamilyDto,
+      },
+    });
+
+    if (!updatedFamily) {
+      throw new Error(`No family found with ID ${familyId}`);
+    }
+
+    return updatedFamily;
+  }
+
+
+
+  async deleteFamily(familyId: string) {
+    const family = await this.prisma.family.findUnique({
+      where: {
+        id: familyId,
+      },
+    });
+
+    if (!family) {
+      throw new Error(`No family found with ID ${familyId}`);
+    }
+
+    const deletedFamily = await this.prisma.family.delete({
+      where: {
+        id: familyId,
+      },
+    });
+
+    if (!deletedFamily) {
+      throw new Error(`No family found with ID ${familyId}`);
+    }
+
+    return deletedFamily;
+  }
+
 }
