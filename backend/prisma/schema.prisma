@@ -23,6 +23,7 @@ model User {
   ChatRoom      Chatroom?     @relation(fields: [chatRoomId], references: [id])
   chatRoomId    String?       @db.ObjectId
   ChatMessage   ChatMessage[]
+  recipes       Recipe[]
 }
 
 model Family {
@@ -30,6 +31,7 @@ model Family {
   name        String  @unique
   description String?
   members     User[]
+  recipes     Recipe[]
 }
 
 model Chatroom {
@@ -47,4 +49,14 @@ model ChatMessage {
   userId     String   @db.ObjectId
   chatroom   Chatroom @relation(fields: [chatroomId], references: [id])
   chatroomId String   @db.ObjectId
+}
+
+model Recipe {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String  @unique
+  description String?
+  user        User    @relation(fields: [userId], references: [id])
+  userId      String  @db.ObjectId
+  family      Family  @relation(fields: [familyId], references: [id])
+  familyId    String  @db.ObjectId
 }
