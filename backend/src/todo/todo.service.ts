@@ -110,4 +110,28 @@ export class TodoService {
 
     return deletedTodo;
   }
+
+
+  async completeTodo(todoId: string) {
+    const todo = await this.todoService.getTodoById(todoId);
+
+    if (!todo) {
+      throw new Error(`No todo found with ID ${todoId}`);
+    }
+
+    const updatedTodo = await this.prismaService.todo.update({
+      where: {
+        id: todoId,
+      },
+      data: {
+        completed: true,
+      },
+    });
+
+    if (!updatedTodo) {
+      throw new Error(`No todo found with ID ${todoId}`);
+    }
+
+    return updatedTodo;
+  }
 }
