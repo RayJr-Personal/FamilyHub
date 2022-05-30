@@ -9,7 +9,7 @@ export class UsersService {
     private readonly prisma: PrismaService,
     ) {}
 
-    
+
   async createUser(createUserDTO: CreateUserDto) {
     const user = await this.prisma.user.create({
       data: {
@@ -52,6 +52,21 @@ export class UsersService {
       },
       data: {
         isFamilyAdmin: true,
+      },
+    });
+  }
+
+  
+  async deleteUser(id: string) {
+    const existingUser = await this.findById(id);
+
+    if (!existingUser) {
+      throw new BadRequestException(`No user found with ID ${id}`);
+    }
+
+    return this.prisma.user.delete({
+      where: {
+        id: id,
       },
     });
   }
