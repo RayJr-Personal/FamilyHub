@@ -7,21 +7,25 @@ import { CreateTodoDto } from './dtos/create-todo.dto';
 export class TodoService {
   constructor(
     private readonly usersService: UsersService,
-    private readonly prisma: PrismaService,
+    private readonly prismaService: PrismaService,
     private readonly todoService: TodoService,
   ) {}
 
-  async createTodo(createTodoDto: CreateTodoDto) {
-    return this.prisma.todo.create({
+  async createTodo(createTodoDto: CreateTodoDto, userId: string) {
+    const todo = await this.prismaService.todo.create({
       data: {
         ...createTodoDto,
+        //assignedUser: { connect: { id: userId } },
       },
     });
+
+
+    return todo;
   }
 
 
   async getTodoForFamily(familyId: string) {
-    return this.prisma.todo.findMany({
+    return this.prismaService.todo.findMany({
       where: {
         familyId,
       },
@@ -34,7 +38,7 @@ export class TodoService {
       throw new BadRequestException(`No todo found with ID ${todoId}`);
     }
 
-    return this.prisma.todo.findUnique({
+    return this.prismaService.todo.findUnique({
       where: {
         id: todoId,
       },
@@ -46,7 +50,7 @@ export class TodoService {
 
   async assignTodoToUser(todoId: string, userId: string, familyId: string) {
     
-    const family = await this.prisma.family.findUnique({
+    const family = await this.prismaService.family.findUnique({
       where: {
         id: familyId,
       },
@@ -68,15 +72,15 @@ export class TodoService {
 
     if (!todo) {
       throw new Error(`No todo found with ID ${todoId}`);
-    }
+    } 
 
-    
-    const updatedTodo = await this.prisma.todo.update({
+    const updatedTodo = await this.prismaService.todo.update({
       where: {
         id: todoId,
       },
       data: {
-        assignedUser: user,
+        // can't get below line to work without errors :|
+        //assignedUser: { connect: { id: userId } },
       },
     });
 
@@ -86,5 +90,4 @@ export class TodoService {
 
     return updatedTodo;
   }
-  
 }

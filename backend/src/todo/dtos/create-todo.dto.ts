@@ -8,9 +8,10 @@ export class CreateTodoDto {
   @IsString()
   @IsOptional()
   duedate: string;
-  assignedUser: string;
 
   @IsBoolean()
   completed: boolean;
+
+  assignedUser: string;
   
 }
