@@ -56,7 +56,7 @@ export class UsersService {
     });
   }
 
-  
+
   async deleteUser(id: string) {
     const existingUser = await this.findById(id);
 
@@ -70,4 +70,23 @@ export class UsersService {
       },
     });
   }
+
+  
+  async updateUser(id: string, updateUserDTO: CreateUserDto) {
+    const existingUser = await this.findById(id);
+
+    if (!existingUser) {
+      throw new BadRequestException(`No user found with ID ${id}`);
+    }
+
+    return this.prisma.user.update({
+      where: {
+        id: id,
+      },
+      data: {
+        ...updateUserDTO,
+      },
+    });
+  }
+  
 }
