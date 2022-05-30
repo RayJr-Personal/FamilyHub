@@ -47,7 +47,6 @@ export class TodoService {
   }
 
 
-
   async assignTodoToUser(todoId: string, userId: string, familyId: string) {
     
     const family = await this.prismaService.family.findUnique({
@@ -89,5 +88,26 @@ export class TodoService {
     }
 
     return updatedTodo;
+  }
+
+
+  async deleteTodo(todoId: string) {
+    const todo = await this.todoService.getTodoById(todoId);
+
+    if (!todo) {
+      throw new Error(`No todo found with ID ${todoId}`);
+    }
+
+    const deletedTodo = await this.prismaService.todo.delete({
+      where: {
+        id: todoId,
+      },
+    });
+
+    if (!deletedTodo) {
+      throw new Error(`No todo found with ID ${todoId}`);
+    }
+
+    return deletedTodo;
   }
 }
