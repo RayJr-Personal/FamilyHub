@@ -30,7 +30,6 @@ const cookieSession = require('cookie-session');
     UsersModule,
     FamiliesModule,
     ChatModule,
-    TodoModule,
     UploadModule,
   ],
   controllers: [AppController, CalendarController],

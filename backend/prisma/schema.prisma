@@ -23,7 +23,6 @@ model User {
   ChatRoom      Chatroom?     @relation(fields: [chatRoomId], references: [id])
   chatRoomId    String?       @db.ObjectId
   ChatMessage   ChatMessage[]
-  Todo          Todo[]
 }
 
 model Family {
@@ -31,7 +30,6 @@ model Family {
   name        String  @unique
   description String?
   members     User[]
-  Todo        Todo[]
   calendar    Calendar?
 }
 
