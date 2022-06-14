@@ -32,6 +32,7 @@ model Family {
   description String?
   members     User[]
   Todo        Todo[]
+  calendar    Calendar?
 }
 
 model Chatroom {
@@ -60,4 +61,20 @@ model Todo {
   userId     String   @db.ObjectId
   familyId  String  @db.ObjectId
   family    Family  @relation(fields: [familyId], references: [id])
+}
+model Calendar {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  events        CalendarEvent[]
+  Family        Family?       @relation(fields: [familyId], references: [id])
+  familyId      String?       @db.ObjectId
+}
+
+model CalendarEvent {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  name        String    @unique
+  startDate   DateTime
+  endDate     DateTime
+  calendar    Calendar  @relation(fields: [calendarId], references: [id])
+  calendarId  String    @db.ObjectId
 }
