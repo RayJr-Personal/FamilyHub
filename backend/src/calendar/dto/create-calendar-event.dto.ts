@@ -1,6 +1,6 @@
 import { IsString } from 'class-validator';
 
-export class CreateCalendarDto {
+export class CreateCalendarEventDto {
   @IsString()
   name: string;
 
