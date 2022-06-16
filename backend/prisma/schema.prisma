@@ -63,6 +63,7 @@ model CalendarEvent {
   name        String    @unique
   startDate   DateTime
   endDate     DateTime
+  isActive    Boolean
   calendar    Calendar  @relation(fields: [calendarId], references: [id])
   calendarId  String    @db.ObjectId
 }
