@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsInt, IsString } from 'class-validator';
 
 export class CreateCalendarEventDto {
   @IsString()
@@ -9,4 +9,10 @@ export class CreateCalendarEventDto {
 
   @IsString()
   endDate: string;
+
+  @IsString()
+  isActive: string;
+
+  @IsString()
+  calendarId: string;
 }

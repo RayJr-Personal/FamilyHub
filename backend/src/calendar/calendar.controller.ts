@@ -12,7 +12,12 @@ import { User } from '@prisma/client';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { CurrentUser } from 'src/users/decorators/current-user.decorator';
 import { CalendarService } from './calendar.service';
-import { CreateCalendarDto, UpdateCalendarDto } from './dto';
+import {
+  CreateCalendarDto,
+  CreateCalendarEventDto,
+  UpdateCalendarDto,
+  UpdateCalendarEventDto,
+} from './dto';
 
 @Controller('calendar')
 export class CalendarController {
@@ -27,7 +32,7 @@ export class CalendarController {
   }
 
   @Post()
-  makeCalendar(@Body() dto: CreateCalendarDto) {
+  createCalendar(@Body() dto: CreateCalendarDto) {
     return this.calendarService.createCalendar(dto);
   }
 
@@ -43,5 +48,31 @@ export class CalendarController {
   @Delete(':id')
   deleteCalendar(@CurrentUser() user: User, @Param('id') calendarId: string) {
     return this.calendarService.deleteCalendar(user, calendarId);
+  }
+
+  // CalendarEvent endpoints
+  @Post('/createEvent')
+  createCalendarEvent(
+    @CurrentUser() user: User,
+    @Body() dto: CreateCalendarEventDto,
+  ) {
+    return this.calendarService.createCalendarEvent(user, dto);
+  }
+
+  @Patch('/updateEvent/:id')
+  updateCalendarEvent(
+    @CurrentUser() user: User,
+    @Body() dto: UpdateCalendarEventDto,
+    @Param('id') calendarEventId: string,
+  ) {
+    return this.calendarService.updateCalendarEvent(user, dto, calendarEventId);
+  }
+
+  @Delete('/deleteEvent/:id')
+  deleteCalendarEvent(
+    @CurrentUser() user: User,
+    @Param('id') calendarEventId: string,
+  ) {
+    return this.calendarService.deleteCalendarEvent(user, calendarEventId);
   }
 }
