@@ -15,10 +15,4 @@ export class UserDto {
 
   @Expose()
   username: string;
-
-  @Expose()
-  familyId: string;
-
-  @Expose()
-  chatRoomId: string;
 }

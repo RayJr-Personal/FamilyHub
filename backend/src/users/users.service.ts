@@ -8,7 +8,7 @@ export class UsersService {
   async findById(id: string) {
     const existingUser = await this.prisma.user.findUnique({
       where: {
-        id: id,
+        id,
       },
     });
 
@@ -19,20 +19,22 @@ export class UsersService {
     return existingUser;
   }
 
-  async makeUserFamilyAdmin(id: string) {
-    const existingUser = await this.findById(id);
+  async makeUserFamilyAdmin(userId: string) {
+    const existingUser = await this.findById(userId);
 
     if (!existingUser) {
-      throw new BadRequestException(`No user found with ID ${id}`);
+      throw new BadRequestException(`No user found with ID ${userId}`);
     }
 
     if (existingUser.isFamilyAdmin) {
-      throw new BadRequestException(`User with ID ${id} is already an admin`);
+      throw new BadRequestException(
+        `User with ID ${userId} is already an admin`,
+      );
     }
 
     return this.prisma.user.update({
       where: {
-        id: id,
+        id: userId,
       },
       data: {
         isFamilyAdmin: true,
