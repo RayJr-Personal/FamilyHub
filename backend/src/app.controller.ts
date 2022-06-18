@@ -22,4 +22,5 @@ export class AppController {
   uploadImage(@UploadedFile() file: Express.Multer.File) {
     return this.appService.uploadImage(file);
   }
+  
 }
