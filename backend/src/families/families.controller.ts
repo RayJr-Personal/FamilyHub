@@ -20,19 +20,13 @@ export class FamiliesController {
     @Body() createFamilyDto: CreateFamilyDto,
     @CurrentUser() user: User,
   ) {
-    createFamilyDto.userId = user.id;
-    return this.familiesService.createFamily(createFamilyDto);
+    console.log('user', user);
+    return this.familiesService.createFamily(createFamilyDto, user.id);
   }
 
   @Post('add-user')
   @UseGuards(FamilyAdminGuard)
-  addUserToFamily(
-    @Body() createFamilyDto: CreateFamilyDto,
-    @CurrentFamily() familyId: string,
-  ) {
-    return this.familiesService.addUserToFamily(
-      createFamilyDto.userId,
-      familyId,
-    );
+  addUserToFamily(@Body() userId: string, @CurrentFamily() familyId: string) {
+    return this.familiesService.addUserToFamily(userId, familyId);
   }
 }

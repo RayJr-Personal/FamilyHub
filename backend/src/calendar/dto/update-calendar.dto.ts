@@ -1,14 +1,11 @@
 import { IsOptional, IsString } from 'class-validator';
 
-export class CreateFamilyDto {
+export class UpdateCalendarDto {
   @IsString()
-  name: string;
+  @IsOptional()
+  name?: string;
 
   @IsString()
   @IsOptional()
-  description?: string;
-
-  @IsString()
-  @IsOptional()
-  image?: string;
+  familyId?: string;
 }
