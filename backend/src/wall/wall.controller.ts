@@ -21,7 +21,7 @@ export class WallController {
     @CurrentUser() user: User,
   ) {
     console.log('user', user);
-    return this.wallService.createWall(createWallDto, user.id);
+    return this.wallService.createWall(createWallDto, user.id, user.familyId);
   }
 
 }

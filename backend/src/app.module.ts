@@ -8,7 +8,7 @@ import { UsersModule } from './users/users.module';
 import { FamiliesModule } from './families/families.module';
 import { ChatModule } from './chat/chat.module';
 import { UploadModule } from './upload/upload.module';
-// import { TodoModule } from './todo/todo.module';
+import { WallModule } from './wall/wall.module';
 import { CalendarService } from './calendar/calendar.service';
 import { CalendarController } from './calendar/calendar.controller';
 
@@ -31,6 +31,7 @@ const cookieSession = require('cookie-session');
     FamiliesModule,
     ChatModule,
     UploadModule,
+    WallModule,
   ],
   controllers: [AppController, CalendarController],
   providers: [

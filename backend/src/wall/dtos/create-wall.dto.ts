@@ -1,3 +1,4 @@
+import { Family } from '@prisma/client';
 import { IsOptional, IsString } from 'class-validator';
 
 export class CreateWallDto {
@@ -5,4 +6,6 @@ export class CreateWallDto {
   @IsOptional()
   posts?: string[];
 
+  @IsString()
+  familyId: string;
 }
