@@ -24,6 +24,7 @@ model User {
   chatRoomId    String?       @db.ObjectId
   ChatMessage   ChatMessage[]
   recipes       Recipe[]
+  WallPost      WallPost[]
 }
 
 model Family {
@@ -32,6 +33,8 @@ model Family {
   description String?
   members     User[]
   recipes     Recipe[]
+  calendar    Calendar?
+  wall        Wall?
 }
 
 model Chatroom {
@@ -59,4 +62,39 @@ model Recipe {
   userId      String  @db.ObjectId
   family      Family  @relation(fields: [familyId], references: [id])
   familyId    String  @db.ObjectId
+
+model Calendar {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  events        CalendarEvent[]
+  Family        Family?       @relation(fields: [familyId], references: [id])
+  familyId      String?       @db.ObjectId
+}
+
+model CalendarEvent {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  name        String    @unique
+  startDate   DateTime
+  endDate     DateTime
+  isActive    Boolean
+  calendar    Calendar  @relation(fields: [calendarId], references: [id])
+  calendarId  String    @db.ObjectId
+}
+
+model Wall {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  posts       WallPost[]
+  familyId    String?   @db.ObjectId
+  family      Family?   @relation(fields: [familyId], references: [id])
+}
+
+model WallPost {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  message     String
+  image       String?
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+  wall        Wall     @relation(fields: [wallId], references: [id])
+  wallId      String   @db.ObjectId
+
 }

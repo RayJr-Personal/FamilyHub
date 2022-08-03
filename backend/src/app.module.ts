@@ -8,6 +8,9 @@ import { UsersModule } from './users/users.module';
 import { FamiliesModule } from './families/families.module';
 import { ChatModule } from './chat/chat.module';
 import { UploadModule } from './upload/upload.module';
+import { WallModule } from './wall/wall.module';
+import { CalendarService } from './calendar/calendar.service';
+import { CalendarController } from './calendar/calendar.controller';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const cookieSession = require('cookie-session');
@@ -28,8 +31,9 @@ const cookieSession = require('cookie-session');
     FamiliesModule,
     ChatModule,
     UploadModule,
+    WallModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, CalendarController],
   providers: [
     AppService,
     {
@@ -38,6 +42,7 @@ const cookieSession = require('cookie-session');
         whitelist: true,
       }),
     },
+    CalendarService,
   ],
 })
 export class AppModule {
