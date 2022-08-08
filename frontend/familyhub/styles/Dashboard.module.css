@@ -41,6 +41,21 @@
   /* background-color: blue; */
 }
 
+.feedItem {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.feedItemPoster {
+  font-weight: bold;
+}
+
+.feedItemTime {
+  font-size: 10pt;
+}
+
 .members {
   flex: 0 0 25%;
   /* background-color: green; */
