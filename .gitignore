@@ -43,3 +43,15 @@ yarn-error.log*
 next-env.d.ts
 
 
+frontend/familyhub/.next/trace
+frontend/familyhub/.next/cache/webpack/client-development/4.pack
+frontend/familyhub/.next/cache/webpack/client-development/5.pack
+frontend/familyhub/.next/cache/webpack/client-development/6.pack
+frontend/familyhub/.next/cache/webpack/client-development/7.pack
+frontend/familyhub/.next/cache/webpack/client-development/index.pack
+frontend/familyhub/.next/cache/webpack/client-development/index.pack.old
+frontend/familyhub/.next/cache/webpack/server-development/4.pack
+frontend/familyhub/.next/cache/webpack/server-development/5.pack
+frontend/familyhub/.next/cache/webpack/server-development/6.pack
+frontend/familyhub/.next/cache/webpack/server-development/index.pack
+frontend/familyhub/.next/cache/webpack/server-development/index.pack.old
