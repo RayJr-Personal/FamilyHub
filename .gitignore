@@ -12,9 +12,8 @@
 /.next/
 /.next/cache/webpack/client-development
 /.next/cache/webpack/server-development
+frontend/familyhub/.next/cache/*
 /frontend/familyhub/.next/
-/frontend/familyhub/.next/cache/webpack/client-development
-/frontend/familyhub/.next/cache/webpack/server-development
 /out/
 
 # production
@@ -25,6 +24,7 @@
 *.pem
 *.pack
 *.old
+
 
 # debug
 npm-debug.log*
@@ -41,3 +41,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
