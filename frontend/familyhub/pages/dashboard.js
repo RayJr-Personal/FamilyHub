@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import styles2 from "../styles/Dashboard.module.css";
+import Feed from "../components/Feed";
 
 export default function Home() {
   return (
@@ -24,21 +25,7 @@ export default function Home() {
           <p>Photos</p>
           <p>Recipes</p>
         </div>
-
-        <div className={`${styles2.feed} ${styles2.mainChild}`}>
-          <h2>Feed</h2>
-          <div className={styles2.feedItem}>
-            <p>
-              <span className={styles2.feedItemPoster}>Example member</span>{" "}
-              posted:
-            </p>
-            <p className={styles2.feedItemTime}>1 hr 12 m ago</p>
-            <div className={styles2.feedItemBody}>
-              <p>insert picture here</p>
-              <p>Lorem ipsum...</p>
-            </div>
-          </div>
-        </div>
+        <Feed />
 
         <div className={`${styles2.members} ${styles2.mainChild}`}>
           <h2>Family members</h2>
