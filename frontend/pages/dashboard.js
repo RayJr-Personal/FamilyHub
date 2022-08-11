@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import styles2 from "../styles/Dashboard.module.css";
 import Feed from "../components/Feed";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -21,9 +21,15 @@ export default function Home() {
         <div className={`${styles2.dashboardNav} ${styles2.mainChild}`}>
           <h2>Profile picture</h2>
           <h2>Full name</h2>
-          <p>Events</p>
-          <p>Photos</p>
-          <p>Recipes</p>
+          <p>
+            <a href="#">Events</a>
+          </p>
+          <p>
+            <a href="#">Photos</a>
+          </p>
+          <p>
+            <a href="#">Recipes</a>
+          </p>
         </div>
         <Feed />
 
@@ -34,18 +40,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }
