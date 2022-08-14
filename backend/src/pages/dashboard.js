@@ -1,8 +1,8 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import styles2 from "../styles/Dashboard.module.css";
-import Feed from "../components/Feed";
-import Footer from "../components/Footer";
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
+import styles2 from '../styles/Dashboard.module.css';
+import Feed from '../client/Feed';
+import Footer from '../client/Footer';
 
 export default function Home() {
   return (
