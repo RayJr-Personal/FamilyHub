@@ -6,15 +6,16 @@ import clsx from 'clsx'
 import { Container } from '@/components/Container'
 import screenshotContacts from '@/images/screenshots/contacts.png'
 import screenshotInventory from '@/images/screenshots/inventory.png'
-import screenshotProfitLoss from '@/images/screenshots/profit-loss.png'
+import screenshotFamily1 from '@/images/screenshots/family1.png'
+// 1688 × 856
 
 const features = [
   {
-    name: 'Reporting',
-    summary: 'Stay on top of things with always up-to-date reporting features.',
+    name: 'Keep your fingers on the pulse of your family',
+    summary: 'A central location for all your families news.',
     description:
-      'We talked about reporting in the section above but we needed three items here, so mentioning it one more time for posterity.',
-    image: screenshotProfitLoss,
+      'It can be tricky keeping everyone in the immediate and wider family across all the news. FamilyHub enables you to have one location for all your updates.',
+    image: screenshotFamily1,
     icon: function ReportingIcon() {
       let id = useId()
       return (
@@ -210,18 +211,17 @@ export function MainFeatures() {
   return (
     
     <section
-      id="secondary-features"
-      aria-label="Features for simplifying everyday business tasks"
+      id="main-features"
+      aria-label="Everything needed to bring the family together"
       className="pt-20 pb-14 sm:pb-20 sm:pt-32 lg:pb-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
           <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-            Simplify everyday business tasks.
+          Everything needed to bring the family together.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Because you’d probably be a little confused if we suggested you
-            complicate your everyday business tasks instead.
+            Because life isn't getting any slower and keeping the everyone updated can be a chore.
           </p>
         </div>
         <FeaturesMobile />
