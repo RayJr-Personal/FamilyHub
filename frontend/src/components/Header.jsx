@@ -1,55 +1,10 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
-import clsx from "clsx";
 
-import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { NavLink } from "@/components/NavLink";
-import UserGroupIcon from "./icons/UserGroupIcon";
-
-import avatarImage1 from "@/images/avatars/avatar-1.png";
-import avatarImage2 from "@/images/avatars/avatar-2.png";
-import avatarImage3 from "@/images/avatars/avatar-3.png";
-import avatarImage4 from "@/images/avatars/avatar-4.png";
-import avatarImage5 from "@/images/avatars/avatar-5.png";
-
-import { UserList } from "./UserList";
-
-const users = [
-  {
-    id: "1",
-    name: "Sheryl Berge",
-    image: avatarImage1,
-  },
-  {
-    id: "2",
-    name: "Amy Hahn",
-    image: avatarImage4,
-  },
-
-  {
-    id: "3",
-    name: "Leland Kiehn",
-    image: avatarImage5,
-  },
-  {
-    id: "4",
-    name: "Erin Powlowski",
-    image: avatarImage2,
-  },
-  {
-    id: "5",
-    name: "Peter Renolds",
-    image: avatarImage3,
-  },
-  {
-    id: "6",
-    name: "Amy Hahn",
-    image: avatarImage4,
-  },
-];
 
 function MobileNavLink({ href, children }) {
   return (
@@ -59,42 +14,10 @@ function MobileNavLink({ href, children }) {
   );
 }
 
-function MobileNavIcon({ open }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-3.5 w-3.5 overflow-visible stroke-slate-700"
-      fill="none"
-      strokeWidth={2}
-      strokeLinecap="round"
-    >
-      <path
-        d="M0 1H14M0 7H14M0 13H14"
-        className={clsx(
-          "origin-center transition",
-          open && "scale-90 opacity-0"
-        )}
-      />
-      <path
-        d="M2 2L12 12M12 2L2 12"
-        className={clsx(
-          "origin-center transition",
-          !open && "scale-90 opacity-0"
-        )}
-      />
-    </svg>
-  );
-}
-
 function MobileNavigation() {
   return (
     <Popover>
-      <Popover.Button
-        className="relative z-10 flex h-8 w-8 items-center justify-center [&:not(:focus-visible)]:focus:outline-none"
-        aria-label="Toggle Navigation"
-      >
-        {({ open }) => <MobileNavIcon open={open} />}
-      </Popover.Button>
+
       <Transition.Root>
         <Transition.Child
           as={Fragment}
@@ -120,53 +43,9 @@ function MobileNavigation() {
             as="div"
             className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
           >
-            <MobileNavLink href="#features">Features</MobileNavLink>
-            <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
-            <MobileNavLink href="#pricing">Pricing</MobileNavLink>
+
             <hr className="m-2 border-slate-300/40" />
             <MobileNavLink href="/login">Sign in</MobileNavLink>
-          </Popover.Panel>
-        </Transition.Child>
-      </Transition.Root>
-    </Popover>
-  );
-}
-
-function UserListPanel() {
-  return (
-    <Popover>
-      <Popover.Button
-        className="relative z-10 flex h-8 w-8 items-center justify-center [&:not(:focus-visible)]:focus:outline-none"
-        aria-label="Toggle Navigation"
-      >
-        {({ open }) => <UserGroupIcon open={open} />}
-      </Popover.Button>
-      <Transition.Root>
-        <Transition.Child
-          as={Fragment}
-          enter="duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <Popover.Overlay className="fixed inset-0 bg-slate-300/50" />
-        </Transition.Child>
-        <Transition.Child
-          as={Fragment}
-          enter="duration-150 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="duration-100 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <Popover.Panel
-            as="div"
-            className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
-          >
-            <UserList users={users} />
           </Popover.Panel>
         </Transition.Child>
       </Transition.Root>
@@ -185,20 +64,19 @@ export function Header() {
             </div>
             <Link href="#" aria-label="Home">
               <Logo className="h-10 w-auto" />
+              
             </Link>
+            <strong>
+            FamilyHub
+            </strong>
             <div className="flex justify-between items-center">
               <div className="mr-2 ">
-                <UserListPanel />
               </div>
               <div className="w-20 hidden md:block items-center">
                 <NavLink href="/login">Sign in</NavLink>
               </div>
             </div>
-            {/* <div className="hidden md:flex md:gap-x-6">
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#testimonials">Testimonials</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
-            </div> */}
+
           </div>
         </nav>
       </Container>
