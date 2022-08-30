@@ -10,14 +10,17 @@ export default function Register() {
   return (
     <>
       <Head>
-        <title>Sign Up - TaxPal</title>
+        <title>Sign Up - FamilyHub</title>
       </Head>
       <AuthLayout>
         <div className="flex flex-col">
+        
           <Link href="/" aria-label="Home">
             <Logo className="h-10 w-auto" />
+            <strong>FamilyHub</strong>
           </Link>
-          <div className="mt-20">
+          
+          <div className="mt-10">
             <h2 className="text-lg font-semibold text-gray-900">
               Get started for free
             </h2>

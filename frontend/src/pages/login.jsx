@@ -10,14 +10,15 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Sign In - TaxPal</title>
+        <title>Sign In - FamilyHub</title>
       </Head>
       <AuthLayout>
         <div className="flex flex-col">
           <Link href="/" aria-label="Home">
             <Logo className="h-10 w-auto" />
+            <strong>FamilyHub</strong>
           </Link>
-          <div className="mt-20">
+          <div className="mt-10">
             <h2 className="text-lg font-semibold text-gray-900">
               Sign in to your account
             </h2>
