@@ -11,19 +11,17 @@ const testimonials = [
   [
     {
       content:
-        'TaxPal is so easy to use I can’t help but wonder if it’s really doing the things the government expects me to do.',
+        'FamilyHub is so easy to use I can’t help but wonder how I got on before it!.',
       author: {
         name: 'Sheryl Berge',
-        role: 'CEO at Lynch LLC',
         image: avatarImage1,
       },
     },
     {
       content:
-        'I’m trying to get a hold of someone in support, I’m in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.',
+        'I had no trouble getting hold of someone in support, when I had an issue logging in. FamilyHub continues to impress me with its simplicity and ease of use.',
       author: {
         name: 'Amy Hahn',
-        role: 'Director at Velocity Industries',
         image: avatarImage4,
       },
     },
@@ -31,19 +29,17 @@ const testimonials = [
   [
     {
       content:
-        'The best part about TaxPal is every time I pay my employees, my bank balance doesn’t go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.',
+        'The best part about FamilyHub is knowing that you can trust your data. FamilyHub is the best way to manage your family’s data.',
       author: {
         name: 'Leland Kiehn',
-        role: 'Founder of Kiehn and Sons',
         image: avatarImage5,
       },
     },
     {
       content:
-        'There are so many things I had to do with my old software that I just don’t do at all with TaxPal. Suspicious but I can’t say I don’t love it.',
+        'There are so many things I can do with FamilyHub. I can manage my family’s data, and I can share it with my family and friends.',
       author: {
         name: 'Erin Powlowski',
-        role: 'COO at Armstrong Inc',
         image: avatarImage2,
       },
     },
@@ -51,19 +47,17 @@ const testimonials = [
   [
     {
       content:
-        'I used to have to remit tax to the EU and with TaxPal I somehow don’t have to do that anymore. Nervous to travel there now though.',
+        'I used to have to keep track of my families activities with a wall calendar but with FamilyHub it’s so easy to manage.',
       author: {
         name: 'Peter Renolds',
-        role: 'Founder of West Inc',
         image: avatarImage3,
       },
     },
     {
       content:
-        'This is the fourth email I’ve sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.',
+        'FamilyHub has let me share in the special moments of my family. I love being able to share in my family’s activities.',
       author: {
         name: 'Amy Hahn',
-        role: 'Director at Velocity Industries',
         image: avatarImage4,
       },
     },
@@ -88,12 +82,12 @@ export function Testimonials() {
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
           <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-            Loved by businesses worldwide.
+            Loved by families worldwide.
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Our software is so simple that people can’t help but fall in love
-            with it. Simplicity is easy when you just skip tons of
-            mission-critical features.
+            Our website is so simple to use that people can’t help but
+            fall in love with it.  But don't trust our word on it, here 
+            is the testimonials of a few of our valued users.
           </p>
         </div>
         <ul
@@ -116,9 +110,6 @@ export function Testimonials() {
                         <div>
                           <div className="font-display text-base text-slate-900">
                             {testimonial.author.name}
-                          </div>
-                          <div className="mt-1 text-sm text-slate-500">
-                            {testimonial.author.role}
                           </div>
                         </div>
                         <div className="overflow-hidden rounded-full bg-slate-50">

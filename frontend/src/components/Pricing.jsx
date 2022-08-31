@@ -25,7 +25,7 @@ function CheckIcon({ className }) {
     <svg
       aria-hidden="true"
       className={clsx(
-        'h-6 w-6 flex-none fill-current stroke-current',
+        'h-6 w-6 fill-current stroke-current',
         className
       )}
     >
@@ -50,7 +50,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
   return (
     <section
       className={clsx(
-        'flex flex-col rounded-3xl px-6 sm:px-8',
+        'flex flex-col rounded-3xl sm:px-8 text-center',
         featured ? 'order-first bg-blue-600 py-8 lg:order-none' : 'lg:py-8'
       )}
     >
@@ -69,13 +69,13 @@ function Plan({ name, price, description, href, features, featured = false }) {
       <ul
         role="list"
         className={clsx(
-          'order-last mt-10 flex flex-col gap-y-3 text-sm',
+          'order-last text-sm-right text-base mt-4',
           featured ? 'text-white' : 'text-slate-200'
-        )}
+        )} align="center"
       >
         {features.map((feature) => (
-          <li key={feature} className="flex">
-            <CheckIcon className={featured ? 'text-white' : 'text-slate-400'} />
+          <li key={feature} className="flex" align="center">
+              <CheckIcon className=""/>
             <span className="ml-4">{feature}</span>
           </li>
         ))}
@@ -98,7 +98,7 @@ export function Pricing() {
     <section
       id="pricing"
       aria-label="Pricing"
-      className="bg-slate-900 py-20 sm:py-32"
+      className="bg-slate-900 py-20 sm:py-32 flex"
     >
       <Container>
         <div className="md:text-center">
@@ -110,51 +110,25 @@ export function Pricing() {
             for everyone.
           </h2>
           <p className="mt-4 text-lg text-slate-400">
-            It doesn’t matter what size your business is, our software won’t
-            work well for you.
+            It doesn’t matter what the size of your family is, we won't charge you the earth.
           </p>
         </div>
-        <div className="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
-          <Plan
-            name="Starter"
-            price="$9"
-            description="Good for anyone who is self-employed and just getting started."
-            href="/register"
-            features={[
-              'Send 10 quotes and invoices',
-              'Connect up to 2 bank accounts',
-              'Track up to 15 expenses per month',
-              'Manual payroll support',
-              'Export up to 3 reports',
-            ]}
-          />
+        <div className="mt-16" align="center">
+
           <Plan
             featured
-            name="Small business"
+            name="FamilyHub"
             price="$15"
-            description="Perfect for small / medium sized businesses."
+            description="Perfect for families of all sizes."
             href="/register"
             features={[
-              'Send 25 quotes and invoices',
-              'Connect up to 5 bank accounts',
-              'Track up to 50 expenses per month',
-              'Automated payroll support',
-              'Export up to 12 reports',
-              'Bulk reconcile transactions',
-              'Track in multiple currencies',
-            ]}
-          />
-          <Plan
-            name="Enterprise"
-            price="$39"
-            description="For even the biggest enterprise companies."
-            href="/register"
-            features={[
-              'Send unlimited quotes and invoices',
-              'Connect up to 15 bank accounts',
-              'Track up to 200 expenses per month',
-              'Automated payroll support',
-              'Export up to 25 reports, including TPS',
+              'Centralised family management',
+              'One charge for your whole family',
+              'Events and activities management',
+              'Share media and documents',
+              'Share recipes and other family treasures',
+              'Keep distant relatives informed',
+              'Rest assured your families data is secure',
             ]}
           />
         </div>

@@ -6,53 +6,43 @@ import backgroundImage from '@/images/background-faqs.jpg'
 const faqs = [
   [
     {
-      question: 'Does TaxPal handle VAT?',
-      answer:
-        'Well no, but if you move your company offshore you can probably ignore it.',
+      question: 'Can I pay for my subscription via credit card?',
+      answer: 'Absolutely, we payment in a variety of forms.',
     },
     {
-      question: 'Can I pay for my subscription via purchase order?',
-      answer: 'Absolutely, we are happy to take your money in all forms.',
-    },
-    {
-      question: 'How do I apply for a job at TaxPal?',
+      question: 'What was included in the latest update of FamilyHub?',
       answer:
-        'We only hire our customers, so subscribe for a minimum of 6 months and then let’s talk.',
+        'Please subscribe to our development blog if you are interested in the latest code updates.',
     },
   ],
   [
     {
-      question: 'What was that testimonial about tax fraud all about?',
+      question:
+        'Can my family use FamilyHub without an internet connection?',
       answer:
-        'TaxPal is just a software application, ultimately your books are your responsibility.',
+        'Yes, FamilyHub is fully compatible with mobile devices and works offline.',
     },
     {
       question:
-        'TaxPal sounds horrible but why do I still feel compelled to purchase?',
+        'Can FamilyHub be used on a tablet or a smartphone?',
       answer:
-        'This is the power of excellent visual design. You just can’t resist it, no matter how poorly it actually functions.',
-    },
-    {
-      question:
-        'I found other companies called TaxPal, are you sure you can use this name?',
-      answer:
-        'Honestly not sure at all. We haven’t actually incorporated or anything, we just thought it sounded cool and made this website.',
+        'Yes, though we don’t currently have an app, the website is still accessible using those device types.',
     },
   ],
   [
     {
-      question: 'How do you generate reports?',
+      question: 'Does FamilyHub have a free trial?',
       answer:
-        'You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons.',
+        'Yes, you can try FamilyHub out for 6 months free of charge. You can cancel at any time.',
     },
     {
-      question: 'Can we expect more inventory features?',
-      answer: 'In life it’s really better to never expect anything at all.',
+      question: 'Will FamilyHub be available in other languages?',
+      answer: 'Yes, our amazing team is working hard to add more languages.',
     },
     {
       question: 'I lost my password, how do I get into my account?',
       answer:
-        'Send us an email and we will send you a copy of our latest password spreadsheet so you can find your information.',
+        'Send us an email and we will send you a link to reset your password.',
     },
   ],
 ]
@@ -81,8 +71,7 @@ export function Faqs() {
             Frequently asked questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            If you can’t find what you’re looking for, email our support team
-            and if you’re lucky someone will get back to you.
+            If you can’t find what you’re looking for, please don't hesitate to email our support team.
           </p>
         </div>
         <ul

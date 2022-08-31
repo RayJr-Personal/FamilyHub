@@ -4,14 +4,13 @@ import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import screenshotContacts from '@/images/screenshots/contacts.png'
-import screenshotInventory from '@/images/screenshots/inventory.png'
+import screenshotFamily3 from '@/images/screenshots/family3.png'
+import screenshotFamily2 from '@/images/screenshots/family2.png'
 import screenshotFamily1 from '@/images/screenshots/family1.png'
-// 1688 × 856
 
 const features = [
   {
-    name: 'Keep your fingers on the pulse of your family',
+    name: 'News & Chats',
     summary: 'A central location for all your families news.',
     description:
       'It can be tricky keeping everyone in the immediate and wider family across all the news. FamilyHub enables you to have one location for all your updates.',
@@ -45,12 +44,12 @@ const features = [
     },
   },
   {
-    name: 'Inventory',
+    name: 'Events',
     summary:
-      'Never lose track of what’s in stock with accurate inventory tracking.',
+      'Never lose track of what’s happening with your family day to day.',
     description:
-      'We don’t offer this as part of our software but that statement is inarguably true. Accurate inventory tracking would help you for sure.',
-    image: screenshotInventory,
+      'Life can be busy and keeping track of every occasion can be stressful.  FamilyHub enables you to keep track of all your family events.',
+    image: screenshotFamily2,
     icon: function InventoryIcon() {
       return (
         <>
@@ -75,10 +74,10 @@ const features = [
   {
     name: 'Contacts',
     summary:
-      'Organize all of your contacts, service providers, and invoices in one place.',
+      'Organize all of your families contact details in one place.',
     description:
-      'This also isn’t actually a feature, it’s just some friendly advice. We definitely recommend that you do this, you’ll feel really organized and professional.',
-    image: screenshotContacts,
+      'Families can be large and keeping track of everyone and their details can be a hassle. FamilyHub enables you to keep track of all your family contacts.',
+    image: screenshotFamily3,
     icon: function ContactsIcon() {
       return (
         <>
