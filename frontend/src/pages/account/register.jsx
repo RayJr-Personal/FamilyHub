@@ -82,27 +82,36 @@ export default function Register() {
           className="mt-10 grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <input
-            label="First name"
-            id="first_name"
-            name="first_name"
-            type="text"
-            autoComplete="given-name"
-            required
-            {...register('first_name')}
-            className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
-          />
-          
-          <input
-            label="Last name"
-            id="last_name"
-            name="last_name"
-            type="text"
-            autoComplete="family-name"
-            required
-            {...register('last_name')} 
-            className={`form-control ${errors.last_name ? 'is-invalid' : ''}`}
-          />
+          <div className='form-group'>
+            <label>First Name</label>
+            <input
+              label="First name"
+              id="first_name"
+              name="first_name"
+              type="text"
+              autoComplete="given-name"
+              required
+              {...register('first_name')}
+              className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
+            />
+            <div className="invalid-feedback">{errors.first_name?.message}</div>
+          </div>
+
+          <div className='form-group'>
+            <label>Last Name</label>          
+            <input
+              label="Last name"
+              id="last_name"
+              name="last_name"
+              type="text"
+              autoComplete="family-name"
+              required
+              {...register('last_name')} 
+              className={`form-control ${errors.last_name ? 'is-invalid' : ''}`}
+            />
+            <div className="invalid-feedback">{errors.lastName?.message}</div>
+          </div>
+
           <input
             label="Email address"
             id="email"
