@@ -1,10 +1,12 @@
-import { Fragment } from "react";
+import { Fragment,useState, useEffect } from "react";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { NavLink } from "@/components/NavLink";
+
+//import { userService } from 'services';
 
 function MobileNavLink({ href, children }) {
   return (
@@ -45,7 +47,7 @@ function MobileNavigation() {
           >
 
             <hr className="m-2 border-slate-300/40" />
-            <MobileNavLink href="/login">Sign in</MobileNavLink>
+            <MobileNavLink href="/account/login">Sign in</MobileNavLink>
           </Popover.Panel>
         </Transition.Child>
       </Transition.Root>
@@ -54,32 +56,73 @@ function MobileNavigation() {
 }
 
 export function Header() {
-  return (
-    <header className="py-10">
-      <Container>
-        <nav className="relative z-50 flex justify-between">
-          <div className="flex w-full items-center justify-between md:gap-x-12">
-            <div className="-mr-1 md:hidden">
-              <MobileNavigation />
-            </div>
-            <Link href="#" aria-label="Home">
-              <Logo className="h-10 w-auto" />
-              
-            </Link>
-            <strong>
-            FamilyHub
-            </strong>
-            <div className="flex justify-between items-center">
-              <div className="mr-2 ">
-              </div>
-              <div className="w-20 hidden md:block items-center">
-                <NavLink href="/login">Sign in</NavLink>
-              </div>
-            </div>
 
-          </div>
-        </nav>
-      </Container>
-    </header>
-  );
+  const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const subscription = userService.user.subscribe(x => setUser(x));
+        return () => subscription.unsubscribe();
+    }, []);
+
+    function logout() {
+        userService.logout();
+    }
+
+    if (!user) return (
+      <header className="py-10">
+        <Container>
+          <nav className="relative z-50 flex justify-between">
+            <div className="flex w-full items-center justify-between md:gap-x-12">
+              <div className="-mr-1 md:hidden">
+                <MobileNavigation />
+              </div>
+              <Link href="#" aria-label="Home">
+                <Logo className="h-10 w-auto" />
+                
+              </Link>
+              <strong>
+              FamilyHub
+              </strong>
+              <div className="flex justify-between items-center">
+                <div className="mr-2 ">
+                </div>
+                <div className="w-20 hidden md:block items-center">
+                  <NavLink href="/account/login">Sign in</NavLink>
+                </div>
+              </div>
+
+            </div>
+          </nav>
+        </Container>
+      </header>
+    );
+    else
+      return (
+        <header className="py-10">
+        <Container>
+          <nav className="relative z-50 flex justify-between">
+            <div className="flex w-full items-center justify-between md:gap-x-12">
+              <div className="-mr-1 md:hidden">
+                <MobileNavigation />
+              </div>
+              <Link href="#" aria-label="Home">
+                <Logo className="h-10 w-auto" />
+                
+              </Link>
+              <strong>
+              FamilyHub
+              </strong>
+              <div className="flex justify-between items-center">
+                <div className="mr-2 ">
+                </div>
+                <div className="w-20 hidden md:block items-center">
+                  <NavLink href="{logout}">Logout</NavLink>
+                </div>
+              </div>
+
+            </div>
+          </nav>
+        </Container>
+      </header>
+      );
 }

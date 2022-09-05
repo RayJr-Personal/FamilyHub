@@ -120,7 +120,7 @@ export function Pricing() {
             name="FamilyHub"
             price="$15"
             description="Perfect for families of all sizes."
-            href="/register"
+            href="/account/register"
             features={[
               'Centralised family management',
               'One charge for your whole family',
