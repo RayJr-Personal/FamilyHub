@@ -5,21 +5,21 @@ import backgroundImage from '@/images/background-auth.jpg'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-// import { userService } from 'services'
+import { userService } from '@/services/user.service'
 
 
 export function AuthLayout({ children }) {
 
   const router = useRouter();
 
-  // useEffect(() => {
-  //     // redirect to home if already logged in
-  //     if (userService.userValue) {
-  //         router.push('/');
-  //     }
+  useEffect(() => {
+      // redirect to home if already logged in
+      if (userService.userValue) {
+          router.push('/');
+      }
 
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

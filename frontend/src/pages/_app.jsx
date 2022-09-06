@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { userService } from '@/services/user.service';
-import { Alert } from '@/components/Alert';
 
 export default function App({ Component, pageProps }) {
   
@@ -51,7 +50,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-        <Alert />
+
         {authorized && <Component {...pageProps} />}
     </>
       

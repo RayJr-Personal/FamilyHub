@@ -26,8 +26,8 @@ function authenticate(req, res) {
     return res.status(200).json({
         id: user.id,
         email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        first_name: user.first_name,
+        last_name: user.last_name,
         token
     });
 }

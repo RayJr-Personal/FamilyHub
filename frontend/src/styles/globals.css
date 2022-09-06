@@ -5,3 +5,9 @@
 #__next {
   min-height: 100%;
 }
+
+a { cursor: pointer; }
+
+.app-container {
+  min-height: 350px;
+}

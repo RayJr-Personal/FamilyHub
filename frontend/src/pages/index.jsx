@@ -9,9 +9,12 @@ import { Pricing } from '@/components/Pricing'
 import { MainFeatures } from '@/components/MainFeatures'
 import { Testimonials } from '@/components/Testimonials'
 
+import { Alert } from '@/components/Alert';
+
 export default function Home() {
   return (
     <>
+      <Alert/>
       <Head>
         <title>FamilyHub</title>
         <meta

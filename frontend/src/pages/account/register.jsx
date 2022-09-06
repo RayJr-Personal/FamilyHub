@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import { AuthLayout } from '@/pages/account/AuthLayout'
 import { Button } from '@/components/Button'
-import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 
 import { useRouter } from 'next/router';
@@ -13,7 +12,6 @@ import * as Yup from 'yup';
 import { userService } from '@/services/user.service';
 import { alertService } from '@/services/alert.service';
 import { Alert } from '@/components/Alert'
-import { Input } from 'postcss'
 
 export default function Register() {
   
@@ -79,65 +77,77 @@ export default function Register() {
           </div>
         </div>
         <form
-          className="mt-10 grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2"
+          className="mt-10 grid grid-cols-1 gap-y-0 gap-x-4 sm:grid-cols-2"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className='form-group'>
-            <label>First Name</label>
+            <label className="mb-3 block text-sm font-medium text-gray-700">First Name</label>
             <input
               label="First name"
               id="first_name"
               name="first_name"
+              title="first_name"
               type="text"
               autoComplete="given-name"
               required
               {...register('first_name')}
-              className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
+              className={`form-control ${errors.first_name ? 'is-invalid' : ''} block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm`}
             />
-            <div className="invalid-feedback">{errors.first_name?.message}</div>
+            <div className="invalid-feedback mb-3 block text-sm font-medium text-red-700">{errors.first_name?.message}</div>
           </div>
 
           <div className='form-group'>
-            <label>Last Name</label>          
+            <label className="mb-3 block text-sm font-medium text-gray-700">Last Name</label>          
             <input
               label="Last name"
               id="last_name"
               name="last_name"
+              title="last_name"
               type="text"
               autoComplete="family-name"
               required
               {...register('last_name')} 
-              className={`form-control ${errors.last_name ? 'is-invalid' : ''}`}
+              className={`form-control ${errors.last_name ? 'is-invalid' : ''}block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-grey-900 placeholder-grey-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm`}
             />
-            <div className="invalid-feedback">{errors.lastName?.message}</div>
+            <div className="invalid-feedback mb-3 block text-sm font-medium text-red-700">{errors.last_name?.message}</div>
           </div>
 
-          <input
-            label="Email address"
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            {...register('email')}
-            className={`form-control ${errors.username ? 'is-invalid' : ''} col-span-full`}
-          />
-          <input
-            label="Password"
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            required
-            {...register('password')} 
-            className={`form-control ${errors.password ? 'is-invalid' : ''} col-span-full`}
-          />
+          <div className='form-group col-span-full'>
+            <label className="mb-3 block text-sm font-medium text-gray-700">Email Address</label>          
+            <input
+              label="Email address"
+              id="email"
+              name="email"
+              title="email"
+              type="email"
+              autoComplete="email"
+              required
+              {...register('email')}
+              className={`form-control ${errors.email ? 'is-invalid' : ''} col-span-full block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm`}
+            />
+            <div className="invalid-feedback mb-3 block text-sm font-medium text-red-700">{errors.email?.message}</div>
+          </div>
+          <div className='form-group col-span-full'>
+            <label className="mb-3 block text-sm font-medium text-gray-700">Password</label>          
+            <input
+              label="Password"
+              id="password"
+              name="password"
+              title="password"
+              type="password"
+              autoComplete="new-password"
+              required
+              {...register('password')} 
+              className={`form-control ${errors.password ? 'is-invalid' : ''} col-span-full block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm`}
+            />
+            <div className="invalid-feedback mb-3 block text-sm font-medium text-red-700">{errors.password?.message}</div>
+          </div>
           <div className="col-span-full">
             <Button
               type="submit"
               variant="solid"
               color="blue"
-              className="w-full"
+              className="btn btn-primary w-full"
               disabled={formState.isSubmitting}
             >
             

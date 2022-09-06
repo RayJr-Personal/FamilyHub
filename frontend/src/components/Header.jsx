@@ -116,7 +116,7 @@ export function Header() {
                 <div className="mr-2 ">
                 </div>
                 <div className="w-20 hidden md:block items-center">
-                  <NavLink href="{logout}">Logout</NavLink>
+                  <NavLink onClick="{logout}">Logout</NavLink>
                 </div>
               </div>
 
