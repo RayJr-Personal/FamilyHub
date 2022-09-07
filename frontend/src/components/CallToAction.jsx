@@ -27,7 +27,7 @@ export function CallToAction() {
             It’s time to take charge of your families data.  Sign up today so you can
             feel safe knowing your family is in good hands.
           </p>
-          <Button href="/register" color="white" className="mt-10">
+          <Button href="account/register" color="white" className="mt-10">
             Get 6 months free
           </Button>
         </div>

@@ -7,5 +7,23 @@
         "id": 1,
         "dateCreated": "2022-09-07T05:46:20.699Z",
         "dateUpdated": "2022-09-07T05:46:20.699Z"
+    },
+    {
+        "first_name": "Peter",
+        "last_name": "Stanger",
+        "email": "T830281@spark.co.nz",
+        "hash": "$2a$10$Apjx4DW3qT7nZxyUoHIEO.HpCESlJqIw5ecQAFAsMKyI98aEqOLE6",
+        "id": 2,
+        "dateCreated": "2022-09-07T06:11:47.520Z",
+        "dateUpdated": "2022-09-07T06:11:47.520Z"
+    },
+    {
+        "first_name": "Test",
+        "last_name": "Dummy",
+        "email": "stephanie_mullally@hotmail.com",
+        "hash": "$2a$10$Uz3A7SjZV5gzQjoAdU5xq.D8CBhvxIvD/G4JMvQ5DyiuefQJy2vQe",
+        "id": 3,
+        "dateCreated": "2022-09-07T06:45:14.098Z",
+        "dateUpdated": "2022-09-07T06:45:14.098Z"
     }
 ]

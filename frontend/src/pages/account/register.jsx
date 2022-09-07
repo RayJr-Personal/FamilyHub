@@ -52,7 +52,6 @@ export default function Register() {
         <title>Sign Up - FamilyHub</title>
       </Head>
       <AuthLayout>
-        <Alert />
         <div className="flex flex-col">
         
           <Link href="/" aria-label="Home">
@@ -161,8 +160,9 @@ export default function Register() {
           </div>
 
         </form>
-
+      <Alert />
       </AuthLayout>
+
     </>
   )
 }
