@@ -68,61 +68,36 @@ export function Header() {
         userService.logout();
     }
 
-    if (!user) return (
-      <header className="py-10">
-        <Container>
-          <nav className="relative z-50 flex justify-between">
-            <div className="flex w-full items-center justify-between md:gap-x-12">
-              <div className="-mr-1 md:hidden">
-                <MobileNavigation />
-              </div>
-              <Link href="#" aria-label="Home">
-                <Logo className="h-10 w-auto" />
-                
-              </Link>
-              <strong>
-              FamilyHub
-              </strong>
-              <div className="flex justify-between items-center">
-                <div className="mr-2 ">
-                </div>
-                <div className="w-20 hidden md:block items-center">
-                  <NavLink href="/account/login">Sign in</NavLink>
-                </div>
-              </div>
-
+  return (
+    <header className="py-10">
+      <Container>
+        <nav className="relative z-50 flex justify-between">
+          <div className="flex w-full items-center justify-between md:gap-x-12">
+            <div className="flex -mr-1 md:hidden">
+              <MobileNavigation />
             </div>
-          </nav>
-        </Container>
-      </header>
-    );
-    else
-      return (
-        <header className="py-10">
-        <Container>
-          <nav className="relative z-50 flex justify-between">
-            <div className="flex w-full items-center justify-between md:gap-x-12">
-              <div className="-mr-1 md:hidden">
-                <MobileNavigation />
+            <Logo className="h-10 w-auto" />           
+            <strong style={{fontSize: "32px"}}>
+            FamilyHub
+            </strong>
+            <div className="flex justify-between items-center">
+              <div className="mr-2 ">
               </div>
-              <Link href="#" aria-label="Home">
-                <Logo className="h-10 w-auto" />
-                
-              </Link>
-              <strong>
-              FamilyHub
-              </strong>
-              <div className="flex justify-between items-center">
-                <div className="mr-2 ">
-                </div>
-                <div className="w-20 hidden md:block items-center">
-                  <NavLink href="" onClick={logout}>Logout</NavLink>
-                </div>
+              {!user && [
+              <div className="w-20 hidden md:block items-center">
+                <NavLink href="/account/login">Sign in</NavLink>
               </div>
-
+              ]}
+              {user && [
+              <div className="w-70 hidden md:block items-center">
+                <NavLink href="" onClick={logout}>Logout - {user.first_name}</NavLink>
+              </div>
+              ]}
             </div>
-          </nav>
-        </Container>
-      </header>
-      );
+
+          </div>
+        </nav>
+      </Container>
+    </header>
+  );
 }

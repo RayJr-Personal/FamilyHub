@@ -67,6 +67,7 @@ export default function Home() {
           {/* Content below here to show when logged in */}
           {authorized && [
             <div>Display App content here for logged in user.</div>,
+            
             ]}
 
           {/* Content below here to show when logged out */}
