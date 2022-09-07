@@ -12,6 +12,7 @@
     "eslint-config-next": "^12.2.5",
     "express-jwt": "^7.7.5",
     "focus-visible": "^5.2.0",
+    "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "next": "^12.2.4",
     "postcss-focus-visible": "^6.0.4",

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
+import { Spinner } from '@/components/Spinner';
 import { Link } from '@/components/Link';
-import { Layout } from '@/components/users/Layout';
 import { userService } from '@/services/user.service';
+import { Spinner } from '@/components/Spinner';
 
-export default Index;
 
-function Index() {
+export default function Index() {
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function Index() {
     }
 
     return (
-        <Layout>
+        <>
             <h1>Users</h1>
             <Link href="/users/add" className="btn btn-sm btn-success mb-2">Add User</Link>
             <table className="table table-striped">
@@ -55,7 +55,7 @@ function Index() {
                     )}
                     {!users &&
                         <tr>
-
+                            <Spinner />
                         </tr>
                     }
                     {users && !users.length &&
@@ -67,6 +67,6 @@ function Index() {
                     }
                 </tbody>
             </table>
-        </Layout>
+        </>
     );
 }

@@ -1,6 +1,4 @@
-export { errorHandler };
-
-function errorHandler(err, res) {
+export function errorHandler(err, res) {
     if (typeof (err) === 'string') {
         // custom application error
         const is404 = err.toLowerCase().endsWith('not found');

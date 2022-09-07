@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { userService } from '@/services/user.service';
 
 export default function App({ Component, pageProps }) {
-  
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [authorized, setAuthorized] = useState(false);
@@ -50,8 +49,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-
-        {authorized && <Component {...pageProps} />}
+        <div className={`h-full ${user ? 'bg-light' : ''}`}>
+            {authorized && 
+                <Component {...pageProps} />
+            }
+        </div>
     </>
       
   );

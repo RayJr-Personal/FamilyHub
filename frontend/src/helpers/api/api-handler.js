@@ -1,8 +1,7 @@
-import { errorHandler, jwtMiddleware } from 'helpers/api';
+import { errorHandler } from '@/helpers/api/error-handler';
+import { jwtMiddleware } from '@/helpers/api/jwt-middleware';
 
-export { apiHandler };
-
-function apiHandler(handler) {
+export function apiHandler(handler) {
     return async (req, res) => {
         const method = req.method.toLowerCase();
 

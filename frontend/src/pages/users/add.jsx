@@ -1,12 +1,10 @@
-import { Layout, AddEdit } from 'components/users';
+import { AddEdit } from '@/components/users/AddEdit';
 
-export default Add;
-
-function Add() {
+export default function Add() {
     return (
-        <Layout>
+        <>
             <h1>Add User</h1>
             <AddEdit />
-        </Layout>
+        </>
     );
 }

@@ -103,7 +103,7 @@ function Alert({ id, fade }) {
 
     return (
         <div className="container">
-            <div className="m-3">
+            <div className="m-3 text-red-700">
                 {alerts.map((alert, index) =>
                     <div key={index} className={cssClasses(alert)}>
                         <a className="close" onClick={() => removeAlert(alert)}>&times;</a>

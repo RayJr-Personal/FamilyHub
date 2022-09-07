@@ -40,9 +40,12 @@ export default function Register() {
           .then(() => {
               alertService.success('Registration successful', { keepAfterRouteChange: true });
               router.push('login');
+              //print("Registration successful")
           })
           .catch(alertService.error);
   }
+
+ 
 
 
   return (
@@ -77,7 +80,7 @@ export default function Register() {
           </div>
         </div>
         <form
-          className="mt-10 grid grid-cols-1 gap-y-0 gap-x-4 sm:grid-cols-2"
+          className="mt-0 grid grid-cols-1 gap-y-2 gap-x-4 sm:grid-cols-2"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className='form-group'>
@@ -127,6 +130,7 @@ export default function Register() {
             />
             <div className="invalid-feedback mb-3 block text-sm font-medium text-red-700">{errors.email?.message}</div>
           </div>
+
           <div className='form-group col-span-full'>
             <label className="mb-3 block text-sm font-medium text-gray-700">Password</label>          
             <input
@@ -142,23 +146,24 @@ export default function Register() {
             />
             <div className="invalid-feedback mb-3 block text-sm font-medium text-red-700">{errors.password?.message}</div>
           </div>
+
           <div className="col-span-full">
             <Button
-              type="submit"
               variant="solid"
               color="blue"
               className="btn btn-primary w-full"
               disabled={formState.isSubmitting}
             >
-            
-              {formState.isSubmitting}
+              {formState.isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
               <span>
                 Sign up <span aria-hidden="true">&rarr;</span>
               </span>
 
             </Button>
           </div>
+
         </form>
+
       </AuthLayout>
     </>
   )
