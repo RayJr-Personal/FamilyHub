@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "first_name": "Peter",
+        "last_name": "Stanger",
+        "email": "prstanger@gmail.com",
+        "hash": "$2a$10$RnpHhBr9nPtuq2sOSdrzBOro6MNBSPnb9USQbsxs2P5ia8o0nAuZ2",
+        "id": 1,
+        "dateCreated": "2022-09-07T05:46:20.699Z",
+        "dateUpdated": "2022-09-07T05:46:20.699Z"
+    }
+]

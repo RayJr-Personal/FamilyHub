@@ -6,7 +6,7 @@ import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { NavLink } from "@/components/NavLink";
 
-//import { userService } from 'services';
+import { userService } from '@/services/user.service';
 
 function MobileNavLink({ href, children }) {
   return (
@@ -116,7 +116,7 @@ export function Header() {
                 <div className="mr-2 ">
                 </div>
                 <div className="w-20 hidden md:block items-center">
-                  <NavLink onClick="{logout}">Logout</NavLink>
+                  <NavLink href="" onClick={logout}>Logout</NavLink>
                 </div>
               </div>
 

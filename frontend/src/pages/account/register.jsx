@@ -9,44 +9,41 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+
 import { userService } from '@/services/user.service';
 import { alertService } from '@/services/alert.service';
 import { Alert } from '@/components/Alert'
 
 export default function Register() {
-  
   const router = useRouter();
 
   // form validation rules 
   const validationSchema = Yup.object().shape({
-      firstName: Yup.string()
+      first_name: Yup.string()
           .required('First Name is required'),
-      lastName: Yup.string()
+      last_name: Yup.string()
           .required('Last Name is required'),
       email: Yup.string()
           .required('Email Address is required'),
       password: Yup.string()
           .required('Password is required')
           .min(6, 'Password must be at least 6 characters')
-  });
+  }).required();
+
   const formOptions = { resolver: yupResolver(validationSchema) };
 
   // get functions to build form with useForm() hook
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
 
-  function onSubmit(user) {
+  function onSubmit(user){
       return userService.register(user)
           .then(() => {
               alertService.success('Registration successful', { keepAfterRouteChange: true });
               router.push('login');
-              //print("Registration successful")
           })
           .catch(alertService.error);
   }
-
- 
-
 
   return (
     <>
@@ -153,6 +150,7 @@ export default function Register() {
               color="blue"
               className="btn btn-primary w-full"
               disabled={formState.isSubmitting}
+              type="submit"
             >
               {formState.isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
               <span>

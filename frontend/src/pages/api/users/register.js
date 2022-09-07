@@ -10,7 +10,7 @@ export default apiHandler({
 function register(req, res) {
     // split out password from user details 
     const { password, ...user } = req.body;
-
+    
     // validate
     if (usersRepo.find(x => x.email === user.email))
         throw `User with the email "${user.email}" already exists`;

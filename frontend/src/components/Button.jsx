@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import clsx from 'clsx'
 
 const baseStyles = {
@@ -38,7 +37,7 @@ export function Button({
   )
 
   return href ? (
-    <Link href={href} className={className} {...props} />
+    <a href={href} className={className} {...props} />
   ) : (
     <button className={className} {...props} />
   )
