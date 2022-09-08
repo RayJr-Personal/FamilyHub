@@ -25,5 +25,14 @@
         "id": 3,
         "dateCreated": "2022-09-07T06:45:14.098Z",
         "dateUpdated": "2022-09-07T06:45:14.098Z"
+    },
+    {
+        "first_name": "Peter",
+        "last_name": "Stanger",
+        "email": "joebloggs@fakemail.com",
+        "hash": "$2a$10$ddl0YdZ/FE8ygx4kHg39EuBnDOIxrOzBTPlPJZYPdfJty/oRXeR/G",
+        "id": 4,
+        "dateCreated": "2022-09-08T05:04:50.347Z",
+        "dateUpdated": "2022-09-08T05:04:50.347Z"
     }
 ]
