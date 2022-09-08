@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__next {
+  min-height: 100%;
+}
+
+a { cursor: pointer; }
+
+.app-container {
+  min-height: 350px;
+}
