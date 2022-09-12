@@ -34,5 +34,14 @@
         "id": 4,
         "dateCreated": "2022-09-08T05:04:50.347Z",
         "dateUpdated": "2022-09-08T05:04:50.347Z"
+    },
+    {
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "john@test.com",
+        "hash": "$2a$10$GOhwNwtQ/Ypd1/Znkqm70uZaAYepKK1o0FhDMaW2ILFl5Opmv.4s2",
+        "id": 5,
+        "dateCreated": "2022-09-10T03:14:48.671Z",
+        "dateUpdated": "2022-09-10T03:14:48.671Z"
     }
 ]
