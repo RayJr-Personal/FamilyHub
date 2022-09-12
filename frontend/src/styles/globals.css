@@ -6,8 +6,50 @@
   min-height: 100%;
 }
 
-a { cursor: pointer; }
+a {
+  cursor: pointer;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 18px;
+}
 
 .app-container {
   min-height: 350px;
+}
+
+.button {
+  width: 100%;
+  color: white;
+  background-color: #2563eb;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.dashboard-column {
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  height: calc(100vh - 160px);
+}
+
+.post {
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+}
+
+#createPostDialog {
+  /* width: 70vw; */
+  /* border-radius: 10px; */
 }
