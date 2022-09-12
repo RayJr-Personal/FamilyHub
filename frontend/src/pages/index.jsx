@@ -25,7 +25,7 @@ import examplePic2 from "@/images/screenshots/family2.png";
 
 export default function Home() {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [user] = useState(null);
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
