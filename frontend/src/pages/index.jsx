@@ -177,13 +177,13 @@ export default function Home() {
 
           {/* Content below here to show when logged out */}
           {!authorized && [
-            <Hero />,
-            <MainFeatures />,
-            <CallToAction />,
-            <Testimonials />,
-            <Pricing />,
-            <Faqs />,
-            <Footer />,
+            <Hero key="hero-section"/>,
+            <MainFeatures key="mainFeatures-section"/>,
+            <CallToAction key="callToAction-section"/>,
+            <Testimonials key="testimonials-section"/>,
+            <Pricing key="pricing-section"/>,
+            <Faqs key="faqs-section"/>,
+            <Footer key="footer-section"/>,
           ]}
         </main>
       </div>

@@ -69,7 +69,7 @@ export function Header() {
     }
 
   return (
-    <header className="py-10">
+    <header key="header-section" className="py-10">
       <Container>
         <nav className="relative z-50 flex justify-between">
           <div className="flex w-full items-center justify-between md:gap-x-12">
@@ -84,12 +84,12 @@ export function Header() {
               <div className="mr-2 ">
               </div>
               {!user && [
-              <div className="w-20 hidden md:block items-center">
+              <div key="signIn-section" className="w-20 hidden md:block items-center">
                 <NavLink href="/account/login">Sign in</NavLink>
               </div>
               ]}
               {user && [
-              <div className="w-70 hidden md:block items-center">
+              <div key="logout-section" className="w-70 hidden md:block items-center">
                 <NavLink href="" onClick={logout}>Logout - {user.first_name}</NavLink>
               </div>
               ]}
