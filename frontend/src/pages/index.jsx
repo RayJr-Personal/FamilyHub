@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 
 import { CallToAction } from "@/components/CallToAction";
 import { Faqs } from "@/components/Faqs";
@@ -14,7 +13,7 @@ import { NavLink } from "@/components/NavLink";
 
 import { Alert } from "@/components/Alert";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, React, useCallback } from "react";
 import { useRouter } from "next/router";
 
 import { userService } from "@/services/user.service";
@@ -23,10 +22,24 @@ import Image from "next/image";
 import examplePic from "@/images/screenshots/family1.png";
 import examplePic2 from "@/images/screenshots/family2.png";
 
+import axios from "axios";
+
+
+
 export default function Home() {
   const router = useRouter();
   const [user] = useState(null);
   const [authorized, setAuthorized] = useState(false);
+
+  const createFamilyForm = CreateFamilyForm();
+
+  // send new family form to backend
+  const createFamily = useCallback(async () => {
+    const response = await axios.post("http://localhost:5000", { createFamilyForm: createFamilyForm});
+    console.log(response);
+  }, [createFamilyForm]);
+
+  
 
   useEffect(() => {
     // on initial load - run auth check
@@ -80,9 +93,22 @@ export default function Home() {
       <div className={`app-container ${user ? "bg-light" : ""}`}>
         <Alert />
         <Header />
+
         <main>
           {/* Content below here to show when logged in */}
           {authorized && [
+            // testing creation of new family
+
+            <form id="createFamilyForm" onSubmit={createFamily}>
+              <label for="familyName">
+                Family Name
+                <input type="text" id="familyName" name="familyName" />
+              </label>
+              
+              <input type="submit" value="Submit" />
+            </form>,
+
+            
             // <div>Display App content here for logged in user.</div>,
             <div class="mx-3 my-2 flex">
               {/* Left column */}
