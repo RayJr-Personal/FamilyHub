@@ -31,15 +31,15 @@ export default function Home() {
   const [user] = useState(null);
   const [authorized, setAuthorized] = useState(false);
 
-  const createFamilyForm = CreateFamilyForm();
+  // const createFamilyForm = CreateFamilyForm();
 
   // send new family form to backend
-  const createFamily = useCallback(async () => {
-    const response = await axios.post("http://localhost:5000", { createFamilyForm: createFamilyForm});
-    console.log(response);
-  }, [createFamilyForm]);
+  // const createFamily = useCallback(async () => {
+  //   const response = await axios.post("http://localhost:5000", { createFamilyForm: createFamilyForm});
+  //   console.log(response);
+  // }, [createFamilyForm]);
 
-  
+
 
   useEffect(() => {
     // on initial load - run auth check
