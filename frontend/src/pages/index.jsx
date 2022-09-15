@@ -18,6 +18,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { userService } from "@/services/user.service";
+import { postService } from "@/services/post.service";
+import { alertService } from "@/services/alert.service";
 
 import Image from "next/image";
 import examplePic from "@/images/screenshots/family1.png";
@@ -27,6 +29,7 @@ export default function Home() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [authorized, setAuthorized] = useState(false);
+  const [dashboardData, setDashboardData] = useState(null);
 
   useEffect(() => {
     // on initial load - run auth check
@@ -53,6 +56,8 @@ export default function Home() {
       setAuthorized(false);
     } else {
       setAuthorized(true);
+      console.log("Authorized!");
+      getAllPosts();
     }
   }
 
@@ -66,9 +71,34 @@ export default function Home() {
     document.getElementById("createPostDialog").close();
   }
 
+  function getAllPosts() {
+    postService.getAllPosts().then((response) => {
+      response.reverse();
+      setDashboardData(response);
+      console.log("Dashboard data:");
+      console.log(dashboardData);
+    });
+  }
+
   function createPost() {
     console.log("Creating Post");
-    closeModal();
+    let post = {
+      text: document.getElementById("postText").value,
+      user_id: userService.userValue.id,
+      user_name:
+        userService.userValue.first_name +
+        " " +
+        userService.userValue.last_name,
+      family_id: null,
+    };
+
+    return postService
+      .createPost(post)
+      .then(() => {
+        getAllPosts();
+        closeModal();
+      })
+      .catch(alertService.error);
   }
 
   return (
@@ -83,7 +113,6 @@ export default function Home() {
         <main>
           {/* Content below here to show when logged in */}
           {authorized && [
-            // <div>Display App content here for logged in user.</div>,
             <div class="mx-3 my-2 flex">
               {/* Left column */}
               <div class="dashboard-column mx-2 w-3/12 p-4">
@@ -122,6 +151,7 @@ export default function Home() {
                       <button onClick={closeModal}>Close</button>
                     </div>
                     <textarea
+                      id="postText"
                       name="postText"
                       placeholder="What's on your mind?"
                       class="w-full rounded-xl"
@@ -131,7 +161,23 @@ export default function Home() {
                     </button>
                   </dialog>
                 </div>
-
+                {/* Loop */}
+                {dashboardData &&
+                  dashboardData.reverse().map((post, index) => (
+                    <div key={index} class="post my-4">
+                      <div class="postDetails p-4">
+                        <h2>{post.user_name}</h2>
+                        <p>{post.dateCreated}</p>
+                      </div>
+                      <div class="postBody">
+                        <p class="mb-4 px-4">{post.text}</p>
+                        {/* <Image src={examplePic} layout="responsive" /> */}
+                      </div>
+                      <div class="postSocials p-4">
+                        <p>{post.likes} likes</p>
+                      </div>
+                    </div>
+                  ))}
                 {/* Example post 1 */}
                 <div class="post my-4">
                   <div class="postDetails p-4">
