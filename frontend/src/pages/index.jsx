@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 
 import { CallToAction } from "@/components/CallToAction";
 import { Faqs } from "@/components/Faqs";
@@ -14,7 +13,7 @@ import { NavLink } from "@/components/NavLink";
 
 import { Alert } from "@/components/Alert";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, React, useCallback } from "react";
 import { useRouter } from "next/router";
 
 import { userService } from "@/services/user.service";
@@ -25,11 +24,25 @@ import Image from "next/image";
 import examplePic from "@/images/screenshots/family1.png";
 import examplePic2 from "@/images/screenshots/family2.png";
 
+import axios from "axios";
+
+
+
 export default function Home() {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [user] = useState(null);
   const [authorized, setAuthorized] = useState(false);
   const [dashboardData, setDashboardData] = useState(null);
+
+  // const createFamilyForm = CreateFamilyForm();
+
+  // send new family form to backend
+  // const createFamily = useCallback(async () => {
+  //   const response = await axios.post("http://localhost:5000", { createFamilyForm: createFamilyForm});
+  //   console.log(response);
+  // }, [createFamilyForm]);
+
+
 
   useEffect(() => {
     // on initial load - run auth check
@@ -110,9 +123,11 @@ export default function Home() {
       <div className={`app-container ${user ? "bg-light" : ""}`}>
         <Alert />
         <Header />
+
         <main>
           {/* Content below here to show when logged in */}
           {authorized && [
+
             <div class="mx-3 my-2 flex">
               {/* Left column */}
               <div class="dashboard-column mx-2 w-3/12 p-4">
@@ -223,13 +238,13 @@ export default function Home() {
 
           {/* Content below here to show when logged out */}
           {!authorized && [
-            <Hero />,
-            <MainFeatures />,
-            <CallToAction />,
-            <Testimonials />,
-            <Pricing />,
-            <Faqs />,
-            <Footer />,
+            <Hero key="hero-section"/>,
+            <MainFeatures key="mainFeatures-section"/>,
+            <CallToAction key="callToAction-section"/>,
+            <Testimonials key="testimonials-section"/>,
+            <Pricing key="pricing-section"/>,
+            <Faqs key="faqs-section"/>,
+            <Footer key="footer-section"/>,
           ]}
         </main>
       </div>
